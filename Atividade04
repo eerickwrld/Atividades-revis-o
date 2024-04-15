@@ -1,0 +1,41 @@
+package Atividade04;
+
+import java.util.Scanner;
+
+public class Circulo {
+    private double raio;
+    private String cor;
+
+            public Circulo(double raio, String cor){
+                this.raio = raio;
+                this.cor = cor;
+            }
+            public  double calcularArea(){
+        return Math.PI * Math.pow(raio, 2);
+            }
+            public double calcularPerimetro(){
+        return 2 * Math.PI * raio;
+            }
+            public void exibirCaracteristicas(){
+                System.out.println("Circulo");
+                System.out.println("Raio: " + raio);
+                System.out.println("cor "+ cor);
+                System.out.println("area " + calcularArea());
+                System.out.println("Perimetro "+ calcularPerimetro());
+            }
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println("Criando um circulo...");
+        System.out.println("Digite o raio do circulo ");
+        double raio = scanner.nextDouble();
+        System.out.println("Digite a cor do circulo");
+        String cor = scanner.next();
+
+        Circulo circulo = new Circulo(raio,cor);
+        circulo.exibirCaracteristicas();
+        scanner.close();
+    }
+}
+
