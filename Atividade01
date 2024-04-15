@@ -1,0 +1,81 @@
+Atributos do carro
+package Atividades;
+
+public class CarroAtributos {
+    private String marca;
+    private String modelo;
+    private int ano;
+    private String cor;
+    //construtor
+
+    public CarroAtributos(String marca, String modelo, int ano, String cor){
+        this.marca = marca;
+        this.modelo = modelo;
+        this.ano = ano;
+        this.cor = cor;
+    }
+
+    //getters
+    public String getMarca(){
+        return marca;
+    }
+    public String getModelo(){
+        return modelo;
+    }
+    public int getAno(){
+        return ano;
+    }
+    public String getCor(){
+        return cor;
+    }
+
+    //setters
+
+
+    public void setMarca(String marca) {
+        this.marca = marca;
+    }
+
+    public void setModelo(String modelo) {
+        this.modelo = modelo;
+    }
+
+    public void setAno(int ano) {
+        this.ano = ano;
+    }
+
+    public void setCor(String cor) {
+        this.cor = cor;
+    }
+
+    //Exibir infos do carro
+
+    public void exibirInfos(){
+        System.out.println("marca " + marca);
+        System.out.println("modelo " + modelo);
+        System.out.println("ano " + ano);
+        System.out.println("cor " + cor);
+    }
+}
+Teste dos metodos
+
+package Atividades;
+
+public class TesteMetodos {
+    public static void main(String[] args) {
+        CarroAtributos carro1 = new CarroAtributos("honda", "civic", 2008, "preto");
+        CarroAtributos carro2 = new CarroAtributos("mercedes", "GT", 2020, "branca");
+
+        System.out.println("informações do carro 1: ");
+        carro1.exibirInfos();
+
+        System.out.println("informações do carro 2: ");
+        carro2.exibirInfos();
+
+        System.out.println("modificando informações do carro 1...");
+        carro1.setAno(2010);
+        carro1.setCor("preto");
+        carro1.exibirInfos();
+
+    }
+}
