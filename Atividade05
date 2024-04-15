@@ -1,0 +1,56 @@
+package Atividade05;
+
+import java.util.Scanner;
+
+public class Produtos05 {
+    private String nome;
+    private double preco;
+    private int  qtdestoque;
+
+    public Produtos05(String nome){
+        this.nome = nome;
+        this.preco = 0.0;
+        this.qtdestoque = 0;
+    }
+    public Produtos05( String nome, double preco){
+        this.nome = nome ;
+                this.preco = preco;
+                this.qtdestoque = 0;
+    }
+    public Produtos05(String nome, double preco, int qtdestoque){
+        this.nome = nome;
+        this.preco = preco;
+        this.qtdestoque = qtdestoque;
+    }
+        public void exibirDetalhes(){
+        System.out.println("produto   ");
+        System.out.println("nome   " + nome);
+        System.out.println("preço   " + preco);
+        System.out.println("quantidade   " + qtdestoque);
+    }
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        Produtos05 produto = new Produtos05("Tenis:  ");
+        System.out.println("Digite o nome do produto:   ");
+        String nomeProd2 = scanner.next();
+        System.out.println("digite o preço do produto:   ");
+        double precoprod2 = scanner.nextDouble();
+        Produtos05 produto02 = new Produtos05(nomeProd2, precoprod2);
+
+        System.out.println("digite o nome do produto:   ");
+        String nomeProd3 = scanner.next();
+        System.out.println("Digite o preço do produto:    ");
+        double precoProd3 = scanner.nextDouble();
+        System.out.println("Digite a quantidade em estoque:   ");
+        int qtdProd3 = scanner.nextInt();
+        Produtos05 produto03 = new Produtos05(nomeProd3, precoProd3, qtdProd3);
+
+        produto.exibirDetalhes();
+        produto02.exibirDetalhes();
+        produto03.exibirDetalhes();
+
+        scanner.close();
+    }
+
+}
