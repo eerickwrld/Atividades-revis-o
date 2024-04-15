@@ -1,0 +1,118 @@
+propriedades do sistema
+package Atividade3;
+
+public class ProdutoGer{
+
+            private String nomeProd;
+            private double preco;
+            private int quantidade;
+
+            public ProdutoGer(String nome, double preco, int quantidade){
+                this.nomeProd = nomeProd;
+                this.preco = preco;
+                this.quantidade = quantidade;
+            }
+
+    public String getNomeProd() {
+        return nomeProd;
+    }
+
+    public double getPreco() {
+        return preco;
+    }
+
+    public int getQuantidade() {
+        return quantidade;
+    }
+
+    public void setNomeProd(String nomeProd) {
+        this.nomeProd = nomeProd;
+    }
+
+    public void setPreco(double preco) {
+        this.preco = preco;
+    }
+
+    public void setQuantidade(int quantidade) {
+        this.quantidade = quantidade;
+    }
+    public void ExibirIfos(){
+        System.out.println("Nome do produto: " + nomeProd);
+        System.out.println("Preço do produto: " + preco);
+        System.out.println("Quantidade em estoque: " + quantidade);
+
+    }
+}
+Gerenciador do sistema
+package Atividade3;
+
+import javax.security.auth.x500.X500Principal;
+import javax.swing.plaf.synth.SynthOptionPaneUI;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Scanner;
+
+public class Gerenciador {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        Map<String, ProdutoGer> estoque = new  HashMap<>();
+
+        while (true){
+            System.out.println("-------------------------Menu de Gerenciamento-------------------------");
+            System.out.println("Escolha uma opção:");
+            System.out.println("1- Adcionar um produto.");
+            System.out.println("2- Atualizar preço ou quanidade de um produto.");
+            System.out.println("3- exibir os detalhes de um produto.");
+            System.out.println("4- sair..");
+
+            int opcao = scanner.nextInt();
+            scanner.nextLine();
+            switch (opcao){
+                case 1:
+                    System.out.println("digite o nome do produto: ");
+                    String nomeProdutoNovo = scanner.nextLine();
+                    System.out.println("digite o preço do produto: ");
+                    double precoProdutoNovo = scanner.nextDouble();
+                    System.out.println("digite a quantidade a ser adcionada ao estoque do produto: ");
+                    int quantidadeProdutoNovo = scanner.nextInt();
+                    estoque.put(nomeProdutoNovo, new ProdutoGer(nomeProdutoNovo, precoProdutoNovo, quantidadeProdutoNovo));
+                    System.out.println("Produto Adcionado com sucesso! ");
+                    break;
+                case 2:
+                    System.out.println("Digite o nome do produto que deseja atualizar: ");
+                    String nomeProdutoAtt = scanner.nextLine();
+                    if(estoque.containsKey(nomeProdutoAtt)){
+                        ProdutoGer produtoAtt = estoque.get(nomeProdutoAtt);
+                        System.out.println("digite um novo preço pro produto");
+                        double novoPreco = scanner.nextDouble();
+                        produtoAtt.setPreco(novoPreco);
+                        System.out.println("Digite a nova quantidade do produto");
+                        int novaQtd = scanner.nextInt();
+                        produtoAtt.setQuantidade(novaQtd);
+                        System.out.println("Produto atualizado com sucesso ");
+                    } else {
+                        System.out.println("Produto não encontrado");
+                    }
+                    break;
+                case 3:
+                    System.out.println("digite o nome do produto que deseja exibir os detalhes");
+                    String nomeProdutoDetalhes = scanner.nextLine();
+                    if (estoque.containsKey(nomeProdutoDetalhes)){
+                        ProdutoGer produtoDetalhes = estoque.get(nomeProdutoDetalhes);
+                        produtoDetalhes.ExibirIfos();
+                    } else {
+                        System.out.println("Produto não encontrado");
+                    }
+                    break;
+                case 4:
+                    System.out.println("encerrando o programa...");
+                    scanner.close();
+                    System.exit(0);
+                default:
+                    System.out.println("Opção inválida, por favor, escolha novamente");
+            }
+        }
+
+    }
+}
